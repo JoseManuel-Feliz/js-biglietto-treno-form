@@ -5,24 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biglietto Treno</title>
+
     <!-- CSS STYLESHEET -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- JAVASCRIPT -->
-    <script src="./js/script.js"></script>
+    <script defer src="./js/script.js"></script>
 
 </head>
 
 <body>
-    <div>
 
-        <form>
-            <label for="Name">Nome Cognome:</label>
-            <input type="text" id="Name">
-            <label for="Kms">Chilometri:</label>
-            <input type="number" id="Kms" name="lname">
-            <button id="Create" type="button">Genera</button>
-            <button id="Cancel" type="reset">Annulla</button>
-        </form>
+
+
+
+
+
+
+
+    <form>
+        <label for="Name">Nome Cognome:</label>
+        <input type="text" id="Name" placeholder="Inserici nome e cognome">
+        <label for="Kms">Chilometri:</label>
+        <input type="number" id="Kms" placeholder="Inserici la distanza">
+        <label for="Age">Età:</label>
+        <select id="Age">
+            <option value="adulto" selected>Adulto</option>
+            <option value="minorenne">Minorenne</option>
+            <option value="senior">Senior</option>
+
+        </select>
+        <button id="Create" type="button">Genera</button>
+        <button id="Cancel" type="reset">Annulla</button>
+    </form>
+    <p id="price"></p>
     </div>
 </body>
 
