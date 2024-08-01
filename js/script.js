@@ -35,7 +35,10 @@ let finalprice
 const fare = (0.21)
 
 /* Fase Gestione eventi */
-button.addEventListener('click', function () {
+button.addEventListener('click', function (e) {
+
+    e.preventDefault();
+
     const name = namefield.value.trim();
     const kms = kmsfield.value;
     const age = agefield.value;
