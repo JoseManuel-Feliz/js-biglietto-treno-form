@@ -1,0 +1,13 @@
+:root {
+    --bg-linen: #faf0e6;
+    --acqua: #00ffff;
+}
+
+form {
+    background-color: var(--acqua);
+}
+
+.card-form {
+    height: 300px;
+    background-color: var(--bg-linen);
+}
