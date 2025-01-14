@@ -40,7 +40,7 @@ button.addEventListener('click', function (e) {
     e.preventDefault();
 
     const name = namefield.value.trim();
-    const kms = kmsfield.value;
+    const kms = parseInt(kmsfield.value);
     const age = agefield.value;
     console.log(kms, typeof age)
 
@@ -62,5 +62,8 @@ button.addEventListener('click', function (e) {
     }
     console.log(pricemessage + finalprice.toFixed(2))
     if (finalprice > 0) { total.innerHTML = pricemessage + finalprice.toFixed(2) }
+    if (age == 'senior' || age == 'minorenne') {
+        total.innerHTML += ` € ` + baseprice.toFixed(2) + `  ti è stato applicato uno sconto`
+    }
 })
 /*  fase di output */

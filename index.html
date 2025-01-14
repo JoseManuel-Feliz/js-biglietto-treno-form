@@ -16,36 +16,74 @@
 </head>
 
 <body>
-    <div>
+    <div class="container-fluid card-form  d-flex justify-content-center py-5 ">
 
 
-        <form class="row row-cols-3 g-3">
-            <div class="col">
+        <form class="row row-cols-2 g-3 container rounded-4  justify-content-center text-center ">
+            <div class="col-3">
                 <label for="Name" class="form-label">Nome Cognome</label>
-                <input type="text" class="form-control" id="Name">
+                <input type="text" class="form-control" id="Name" placeholder="Inserici Nome e Cognome">
             </div>
-            <div class="col">
+            <div class="col-3">
                 <label for="Kms" class="form-label">Distanza da percorrere</label>
                 <input id="Kms" type="number" class="form-control" placeholder="Inserici la distanza">
             </div>
 
-            <div class="col">
+            <div class="col-3">
                 <label for="Age" class="form-label">Età</label>
                 <select id="Age" class="form-select">
                     <option selected>Choose...</option>
-                    <option value="adulto" selected>Adulto</option>
+                    <option value="adulto">Adulto</option>
                     <option value="minorenne">Minorenne</option>
                     <option value="senior">Senior</option>
 
                 </select>
             </div>
 
-            <div class="col">
-                <button id="Create" type="submit" class="btn btn-primary">Genera</button>
+            <div class="col-4  ">
+                <button id="Create" type="submit" class="btn btn-primary me-3">Genera</button>
                 <button id="Cancel" type="reset" class="btn btn-primary">Annulla</button>
             </div>
         </form>
-        <p id="price"></p>
+
+    </div>
+
+
+    <div class="ticket-card">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th colspan="5" class="text-uppercase h2 fw-bold border-bottom">Dettagli passeggeri</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="2">NOME PASSEGGERO<span id="Passenger"></span></th>
+
+                </tr>
+                <tr>
+                    <th>Offerta</th>
+                    <th>Carrozza</th>
+                    <th>Codice CP</th>
+                    <th>Costo Biglietto</th>
+
+                </tr>
+                <tr>
+                    <td><span id="Ticket-type"></span></td>
+                    <td><span id=""></span></td>
+                    <td><span id=""></span></td>
+                    <td><span id="price"></span></td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
+        <p></p>
+        <p id="discount"></p>
+
     </div>
 
 
