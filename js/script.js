@@ -1,69 +1,102 @@
-// Calcolatore di prezzo biglietto in base ai dati raccolti dell'utente.
+console.log('JS OK');
 
-/*
-1. Recuperare gli elementi d'interesse all'interno del DOM.
-Inserire le percentuali di sconto
+// TODO SET CLASS NONE AND DISPLAY BLOCK TO TICKET RESULT WHEN THE FORM IS EMPTY AND THEN FILLED IN
 
-2. Creazione messaggio
+// |GOT INTERESTED DOCUMENT ELEMENTS
+const form = document.getElementById('train-form');
 
+// | FORM INPUT ELEMENTS
+const fullNameField = document.getElementById('fullName');
+const travelDistanceField = document.getElementById('travel-distance');
+const passengerAgeField = document.getElementById('passenger-age');
 
-1. Chiedere all'utente il numero di chilometri che vuole percorre.
-2. Chiedere l'età all'utente.
-3. Calcolare il prezzo del viaggio.
-4a. calcolare lo sconto in base all'età dell'utente.
-4a.  un 20% per i minorenni.
-ab.  un 40% per gli over 60.
+// | ELEMENTS TO SHOW RESULTS
+const passengerFullName = document.getElementById('passenger-name');
+const typeOffer = document.getElementById('offer-type');
+const numbCarrige = document.getElementById('train-carrige');
+const passengerCode = document.getElementById('passenger-code');
+const ticketPrice = document.getElementById('ticket-price');
 
-Inserire i dati raccolti all'interno del DOM.
-   . Verificare inserito correttamente in console e nel DOM.
-*/
+// | FORM EVENTLISTERNER
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
+    const travelRate = 0.21;
+    let discount;
 
-/* Fase di Preparazione */
+    // | GET INPUT VALUES 
+    const travelDistanceValue = parseFloat(travelDistanceField.value);
+    const passengerAgeValue = passengerAgeField.value;
+    const fullNameValue = (fullNameField.value).trim();
 
-//1. Recuperare gli elementi d'interesse all'interno del DOM.
-const namefield = document.getElementById('Name');
-const kmsfield = document.getElementById("Kms");
-const agefield = document.getElementById('Age');
-const button = document.getElementById('Create');
-const total = document.getElementById('price')
+    console.log(travelDistanceValue, passengerAgeValue, fullNameValue);
 
-//2. Creazione messaggio
-let pricemessage = 'Il tuo biglietto costa € '
-let finalprice
-// Tariffa al Km 
-const fare = (0.21)
-
-/* Fase Gestione eventi */
-button.addEventListener('click', function (e) {
-
-    e.preventDefault();
-
-    const name = namefield.value.trim();
-    const kms = parseInt(kmsfield.value);
-    const age = agefield.value;
-    console.log(kms, typeof age)
-
-    /* fase dei elaborazione dati */
-
-    let baseprice = (kms * fare)
-
-    finalprice = baseprice
-
-
-    if (age == 'senior') {
-        finalprice *= 0.6;
-
-    } else if (age == 'minorenne') {
-        finalprice *= 0.8
+    // |CONDITION TO SET DISCOUNT VALUE
+    switch (passengerAgeValue) {
+        case 'senior':
+            discount = 0.4
+            break;
+        case 'young':
+            discount = 0.2;
+            break;
+        default:
+            discount = 0
     }
-    else {
-        finalprice = baseprice
+
+    console.log(discount)
+    // |CALC. TO GET TRAVEL PRICE WITHOUT DISCOUNT AMOUNT
+    const travelPrice = parseFloat((travelDistanceValue * travelRate).toPrecision(4));
+
+    console.log(travelPrice);
+
+    // |CALC. TO GET DISCOUNT AMOUNT
+    const discountAmount = parseFloat((travelPrice * discount).toPrecision(4));
+
+    console.log(discountAmount);
+
+    // | CONDITION TO CALC. TOTAL PRICE AMOUNT AND SET THE OFFER TYPE
+
+    let totalPrice;
+    let offer;
+
+    if (discount) {
+        totalPrice = parseFloat((travelPrice - discountAmount).toPrecision(4));
+        offer = 'Reduced Offer';
+
+        console.log('discount is set')
+
+    } else {
+
+        totalPrice = travelPrice;
+        offer = 'Standard Offer';
+
     }
-    console.log(pricemessage + finalprice.toFixed(2))
-    if (finalprice > 0) { total.innerHTML = pricemessage + finalprice.toFixed(2) }
-    if (age == 'senior' || age == 'minorenne') {
-        total.innerHTML += ` € ` + baseprice.toFixed(2) + `  ti è stato applicato uno sconto`
-    }
-})
-/*  fase di output */
+    console.log(totalPrice);
+
+    // | GENERATE A RANDOM NUMBER FOR PASSENGER CODE
+
+    const min = 90000;
+    let max = 99999;
+    const generetedRandomCode = Math.floor(Math.random() * (max + 1 - min)) + min;
+
+    console.log(generetedRandomCode);
+
+    // | GENERATE A RANDOM NUMBER FOR CARRIEGE NUMBER
+
+    max = 12;
+    const generetedRandomCarriege = Math.floor(Math.random() * max) + 1;
+
+    console.log(generetedRandomCarriege)
+
+    // | SET MAX VARIABLE TO EMPTY
+    max = '';
+
+    // | INSERTED RESULTS INTO DOM ELEMENTS 
+
+    passengerFullName.innerText = fullNameValue;
+    typeOffer.innerText = offer;
+    numbCarrige.innerText = generetedRandomCarriege;
+    passengerCode.innerText = generetedRandomCode;
+    ticketPrice.innerText = `${totalPrice} €`;
+
+});
