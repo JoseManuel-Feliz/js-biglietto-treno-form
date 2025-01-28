@@ -7,6 +7,8 @@
     <title>BIGLIETTO TRENO FORM</title>
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- RESPONSIVE CSS -->
+    <link rel="stylesheet" href="./css/responsive.css">
     <!-- SCRIPT JS -->
     <script defer src="./js/script.js"></script>
 </head>
@@ -17,7 +19,7 @@
 
         <div class="row text-center">
 
-            <div class="col-1">
+            <div class="col-form">
                 <!-- TITLE -->
                 <h2 class="fs-2rem fw-bold mx-20 c-secondary">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h2>
 
@@ -26,7 +28,7 @@
                     class="row justify-center align-items-center bg-secondary gap-20 py-20 border-rounded-30">
 
                     <!-- INPUT WRAPPER -->
-                    <div class="col-1 row d-flex justify-space-evenly">
+                    <div class="col-inputs row d-flex justify-space-evenly">
 
                         <!-- PASSENGER FULLNAME INPUT FIELD -->
                         <div class="col input-fields">
@@ -52,7 +54,7 @@
                     </div>
 
                     <!-- BTN-WRAPPER -->
-                    <div class="btn-wrapper">
+                    <div class="btn-wrapper col">
                         <button id="submit-btn" class="btn c-primary fw-bold me-15" type="submit">Genera</button>
                         <button class="btn c-primary fw-bold" type="reset">Annulla</button>
                     </div>
@@ -60,7 +62,7 @@
             </div>
 
             <!-- COL RESULTS TICKET -->
-            <div class="col-1">
+            <div class="col-ticket">
 
                 <!-- RESULT TICKET TITLE -->
                 <h2 class="fs-2rem fw-bold mx-20 c-secondary"> IL TUO BIGLIETTO</h2>
