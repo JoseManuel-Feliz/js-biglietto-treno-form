@@ -4,94 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biglietto Treno</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css'
-        integrity='sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=='
-        crossorigin='anonymous' />
-    <!-- CSS STYLESHEET -->
+    <title>BIGLIETTO TRENO FORM</title>
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="./css/style.css">
-    <!-- JAVASCRIPT -->
+    <!-- SCRIPT JS -->
     <script defer src="./js/script.js"></script>
-
 </head>
 
-<body>
-    <div class="container-fluid card-form  d-flex justify-content-center py-5 ">
+<body class="bg-primary">
 
+    <main class="container">
 
-        <form class="row row-cols-2 g-3 container rounded-4  justify-content-center text-center ">
-            <div class="col-3">
-                <label for="Name" class="form-label">Nome Cognome</label>
-                <input type="text" class="form-control" id="Name" placeholder="Inserici Nome e Cognome">
+        <div class="row text-center">
+
+            <div class="col-1">
+                <!-- TITLE -->
+                <h2 class="fs-2rem fw-bold mx-20 c-secondary">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h2>
+
+                <!-- FORM -->
+                <form id="train-form"
+                    class="row justify-center align-items-center bg-secondary gap-20 py-20 border-rounded-30">
+
+                    <!-- INPUT WRAPPER -->
+                    <div class="col-1 row d-flex justify-space-evenly">
+
+                        <!-- PASSENGER FULLNAME INPUT FIELD -->
+                        <div class="col input-fields">
+                            <label class="mb-10" for="fullName">Nome Cognome</label>
+                            <input type="text" id="fullName">
+                        </div>
+
+                        <!-- TRAVEL DISTANCE INPUT FIELD -->
+                        <div class="col input-fields">
+                            <label class="mb-10" for="travel-distance">Km da percorrere</label>
+                            <input id="travel-distance" type="number" min="10">
+                        </div>
+
+                        <!-- PASSENGER AGE SELECT FIELD -->
+                        <div class="col input-fields">
+                            <label class="mb-10" for="passenger-age">Fascia d'età</label>
+                            <select id="passenger-age">
+                                <option value="adult" selected>Adulto</option>
+                                <option value="senior">Senior</option>
+                                <option value="young">Young</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- BTN-WRAPPER -->
+                    <div class="btn-wrapper">
+                        <button id="submit-btn" class="btn c-primary fw-bold me-15" type="submit">Genera</button>
+                        <button class="btn c-primary fw-bold" type="reset">Annulla</button>
+                    </div>
+                </form>
             </div>
-            <div class="col-3">
-                <label for="Kms" class="form-label">Distanza da percorrere</label>
-                <input id="Kms" type="number" class="form-control" placeholder="Inserici la distanza">
+
+            <!-- COL RESULTS TICKET -->
+            <div class="col-1">
+
+                <!-- RESULT TICKET TITLE -->
+                <h2 class="fs-2rem fw-bold mx-20 c-secondary"> IL TUO BIGLIETTO</h2>
+
+                <!-- RESULT TICKET WRAPPER -->
+                <div class="bg-secondary p-30 result border-rounded-30">
+                    <div class="">DETTAGLIO PASSEGGERI</div>
+
+                    <div class="ticket-result d-flex h-80">
+
+                        <!-- COL PASSENGER FULLNAME RESULT -->
+                        <div class="passenger-fullname bg-grey p-20">
+                            <div>NOME PASSEGGERO</div>
+                            <div id="passenger-name"></div>
+                        </div>
+
+                        <div class="results-fields d-flex h-100 border border-y-2px border-grey p-20 gap-20 ">
+
+                            <!-- COL OFFER TYPE RESULT -->
+                            <div class="col fields">
+                                <div>Offerta</div>
+                                <div id="offer-type"></div>
+                            </div>
+
+                            <!-- COL CARRIGE NUMBER RESULT -->
+                            <div class="col fields">
+                                <div>Carrozza</div>
+                                <div id="train-carrige"></div>
+                            </div>
+
+                            <!-- COL PASSENGER CODE RESULT -->
+                            <div class="col fields">
+                                <div>Codice CP</div>
+                                <div id="passenger-code"></div>
+                            </div>
+
+                            <!-- COL TICKET PRICE RESULT -->
+                            <div class="col fields">
+                                <div>Costo Biglietto</div>
+                                <div id="ticket-price"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="col-3">
-                <label for="Age" class="form-label">Età</label>
-                <select id="Age" class="form-select">
-                    <option selected>Choose...</option>
-                    <option value="adulto">Adulto</option>
-                    <option value="minorenne">Minorenne</option>
-                    <option value="senior">Senior</option>
+        </div>
 
-                </select>
-            </div>
-
-            <div class="col-4  ">
-                <button id="Create" type="submit" class="btn btn-primary me-3">Genera</button>
-                <button id="Cancel" type="reset" class="btn btn-primary">Annulla</button>
-            </div>
-        </form>
-
-    </div>
-
-
-    <div class="ticket-card">
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                    <th colspan="5" class="text-uppercase h2 fw-bold border-bottom">Dettagli passeggeri</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th rowspan="2">NOME PASSEGGERO<span id="Passenger"></span></th>
-
-                </tr>
-                <tr>
-                    <th>Offerta</th>
-                    <th>Carrozza</th>
-                    <th>Codice CP</th>
-                    <th>Costo Biglietto</th>
-
-                </tr>
-                <tr>
-                    <td><span id="Ticket-type"></span></td>
-                    <td><span id=""></span></td>
-                    <td><span id=""></span></td>
-                    <td><span id="price"></span></td>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                </tr>
-            </tbody>
-        </table>
-
-        <p></p>
-        <p id="discount"></p>
-
-    </div>
-
-
-
-
-
-
-
+    </main>
 
 </body>
 
